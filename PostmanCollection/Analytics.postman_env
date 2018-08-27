@@ -1,0 +1,142 @@
+{
+  "id": "3724187a-a4e2-f285-fd56-c8594d93bee3",
+  "name": "Analytics-00 Student 20160201",
+  "values": [
+    {
+      "enabled": true,
+      "key": "analyticId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "analyticName",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "analyticVersion",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "artifactId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "bpmnXML_content",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "catalog_tenant",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "catalog_uri",
+      "value": "predix-analytics-catalog-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "config_uri",
+      "value": "predix-analytics-config-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "configurationId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "Content-Type",
+      "value": "application/json",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "deploymentrequestId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "execution_uri",
+      "value": "predix-analytics-execution-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "jobId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "protocol",
+      "value": "https",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "runtime_tenant",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "scheduler_uri",
+      "value": "predix-scheduler-service-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "token",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "UAA Token URL",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "validationrequestId",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "X-Identity-Zone-Id",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "monitoring_uri",
+      "value": "predix-analytics-monitoring-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "orchestrationRequestId",
+      "value": "",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1503946287956,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2017-08-28T18:51:33.020Z",
+  "_postman_exported_using": "Postman/5.1.3"
+}
