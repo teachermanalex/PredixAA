@@ -1,0 +1,11 @@
+---
+#
+#  Manifest.yml for a basic hello world index.html file
+#  This application and steps to deploy are described in full in the getting started guide on predix.io
+#
+
+applications:
+  - name: <yourname>-hello-predix # Step 1: Change your application name
+    buildpack: staticfile_buildpack 
+    memory: 256M
+    stack: cflinuxfs2
