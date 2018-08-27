@@ -97,7 +97,7 @@ getUAAEndpoint() {
 	  echo "Getting UAA endpoint..."
 	  {
 		 	 env_cf_app=$(cf env $app_name)
-			 uaa_uri=`echo $env_cf_app | egrep -o '"uri": "https?://[^ ]+"' | sed s/\"uri\":\ // | sed s/\"//g`
+			 uaa_uri=`echo $env_cf_app | egrep -o '"uri": "https?://[^ ]+"' | grep predix-uaa | sed s/\"uri\":\ // | sed s/\"//g`
 
 			 if [[ $uaa_uri == *"FAILED"* ]];
 			 then
@@ -106,7 +106,16 @@ getUAAEndpoint() {
 			   exit -1
 			 fi
 
-			 echo "UAA endpoint: $uaa_uri"
+			 uaa_zone=`echo $uaa_uri | sed  's/https:\/\/\([0-9a-z][0-9a-z-]*\)\..*/\1/'`
+
+			 if [[ "${uaa_zone}X" == "X" ]];
+			 then
+			   echo "Unable to find UAA zone from URI:${uaa_uri}!"
+			   sadKitty
+			   exit -1
+			 fi
+
+			 echo "UAA Zone ID: $uaa_zone"
 		} ||
 	  {
 	    sadKitty
@@ -142,8 +151,8 @@ createAsset() {
 	echo ""
 	cf bs $app_name $assetname || sadKitty
 	asset_zone=`cf env $app_name|grep predix-asset|grep '"oauth-scope": "'|sed s/\"oauth-scope\":\ // |sed s/\"//g|sed 's/ //g'` || sadKitty
-	zone=`echo "$asset_zone"|sed -e "s/\predix-asset.zones.//"|sed "s/\.user//g"` || sadKitty 
-	echo $zone
+	predix_asset_zone_id=`echo "$asset_zone"|sed -e "s/\predix-asset.zones.//"|sed "s/\.user//g"` || sadKitty 
+	echo $predix_asset_zone_id
 }
 
 createTimeseries() {
@@ -160,10 +169,11 @@ createAnalyticsFramework() {
 	echo ""
 	echo "Creating Analytics Framework service..."
 	analyticsname=$prefix-analytics-framework
-	cf create-service predix-analytics-framework Free $analyticsname -c '{"trustedIssuerIds":["'$uaa_uri'/oauth/token"],"runtimeClientId":"'$prefix'-client","runtimeClientSecret":"secret","predixTimeseriesZoneId":"'$timeseries_zone'","predixAssetZoneId":"'$zone'","uiDomainPrefix":"'$prefix'-predixUi", "uiClientId":"'$prefix'-client","uiClientSecret":"secret"}' || sadKitty
+	cf create-service predix-analytics-framework Free $analyticsname -c '{"trustedIssuerIds":["'$uaa_uri'/oauth/token"],"runtimeClientId":"'$prefix'-client","runtimeClientSecret":"secret","predixTimeseriesZoneId":"'$timeseries_zone'","predixAssetZoneId":"'$predix_asset_zone_id'","uiDomainPrefix":"'$prefix'-predixUi", "uiClientId":"'$prefix'-client","uiClientSecret":"secret"}' || sadKitty
 	echo ""
 	cf bs $app_name $analyticsname
 	analytics_zone=`cf env $app_name|grep analytics.zone|sed s/\"zone-oauth-scope\":\ // |sed s/\"//g|sed 's/ //g'` || sadKitty
+	analytics_zone_id=`echo $analytics_zone | sed 's/analytics\.zones\.\(.*\)\.user/\1/'`
 
 }
 
@@ -248,16 +258,20 @@ exit 1
 output()
 {
 	cf env $app_name >> environment.txt
-  cat <<EOF >./Analytic_Advance.txt
+  cat <<EOF >./analytics_env.txt
 Hello Predix App Name      :  "$app_name"
 UAA Name                   :  "$uaaname"
 UAA URI                    :  "$uaa_uri"
+UAA Zone Id		   :  "$uaa_zone"
 UAA Admin Secret           :  admin_secret
 Client Name                :  "$clientname"
 Client Secret              :  secret
 Asset Name                 :  "$assetname"
+Asset Zone Id		   :  "$predix_asset_zone_id"
 Timeseries Name            :  "$timeseriesname"
+Timeseries Zone Id	   :  "$timeseries_zone"
 Analytics Name             :  "$analyticsname"
+Analytics Zone Id	   :  "$analytics_zone_id"
 ACS Name                   :  "$acsname"
 App Admin User Name        :  app_admin
 App Admin User Password    :  APP_admin_111
@@ -265,7 +279,7 @@ App User Name              :  app_user
 App User Password          :  APP_user_111
 EOF
  echo ""
- echo "A AnalyticStandlone.txt file with all your environment details is created"
+ echo "A filed named: \"analytics_env.txt\" file with all your environment details is created"
  echo "Your services are now set up!"
 }
 
