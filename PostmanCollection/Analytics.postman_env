@@ -28,6 +28,18 @@
     },
     {
       "enabled": true,
+      "key": "asset_uri",
+      "value": "predix-asset.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "asset_zone_id",
+      "value": "",
+      "type": "text"
+    },
+    {
+      "enabled": true,
       "key": "bpmnXML_content",
       "value": "",
       "type": "text"
@@ -96,6 +108,12 @@
       "enabled": true,
       "key": "scheduler_uri",
       "value": "predix-scheduler-service-release.run.aws-usw02-pr.ice.predix.io",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "timerseries_query_host",
+      "value": "time-series-store-predix.run.aws-usw02-pr.ice.predix.io",
       "type": "text"
     },
     {
