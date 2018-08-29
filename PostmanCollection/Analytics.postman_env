@@ -35,7 +35,7 @@
     {
       "enabled": true,
       "key": "asset_zone_id",
-      "value": "",
+      "value": "<Zone Id from your asset service>",
       "type": "text"
     },
     {

@@ -172,7 +172,7 @@
 				{
 					"name": "Retrieve Artifacts for Analytic",
 					"request": {
-						"url": "https://{{catalog_host}}/api/v1/catalog/analytics/<analyticEntryId>/artifacts",
+						"url": "https://{{catalog_uri}}/api/v1/catalog/analytics/<analyticEntryId>/artifacts",
 						"method": "GET",
 						"header": [
 							{
@@ -182,12 +182,12 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{user_token}}",
+								"value": "Bearer {{token}}",
 								"description": ""
 							},
 							{
 								"key": "Predix-Zone-Id",
-								"value": "{{catalog_zone_id}}",
+								"value": "{{catalog_tenant}}",
 								"description": ""
 							}
 						],
@@ -925,10 +925,10 @@
 					"name": "asset query for 2 step orchestration asset model",
 					"request": {
 						"url": {
-							"raw": "https://{{asset_host}}/assets?filter=uri=/assets/minersRuleOrch*-UUID",
+							"raw": "https://{{asset_uri}}/assets?filter=uri=/assets/minersRuleOrch*-UUID",
 							"protocol": "https",
 							"host": [
-								"{{asset_host}}"
+								"{{asset_uri}}"
 							],
 							"path": [
 								"assets"
@@ -950,7 +950,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{user_token}}",
+								"value": "Bearer {{token}}",
 								"description": ""
 							},
 							{
@@ -975,7 +975,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_token}}",
+								"value": "{{token}}",
 								"description": ""
 							},
 							{
@@ -1000,7 +1000,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_token}}",
+								"value": "{{token}}",
 								"description": ""
 							},
 							{
@@ -1030,7 +1030,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{user_token}}",
+								"value": "{{token}}",
 								"description": ""
 							},
 							{
