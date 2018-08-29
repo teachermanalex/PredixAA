@@ -495,7 +495,7 @@
 								},
 								{
 									"key": "orchestrationEntryId",
-									"value": "{{orchestration_configuration_id}}",
+									"value": "{{configurationId}}",
 									"type": "text"
 								},
 								{
@@ -1238,7 +1238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n     \"orchestrationConfigurationId\": \"<<Orchestration COnfiguration Id>>\",\n     \"assetGroup\": {\n         \"dataSourceId\": \"PredixAsset\",\n         \"assetSelectionFilter\": \"/assets?filter=classification=/classifications/turbine:uri=/assets/minersRuleOrch*&fields=uri\"\n     },\n     \"modelGroupKey\":\"turbine\"\n }"
+					"raw": "{\n     \"orchestrationConfigurationId\": \"{{configurationId}}\",\n     \"assetGroup\": {\n         \"dataSourceId\": \"PredixAsset\",\n         \"assetSelectionFilter\": \"/assets?filter=classification=/classifications/turbine:uri=/assets/minersRuleOrch*&fields=uri\"\n     },\n     \"modelGroupKey\":\"turbine\"\n }"
 				},
 				"description": ""
 			},
