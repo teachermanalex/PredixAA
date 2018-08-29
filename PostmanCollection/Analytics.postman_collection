@@ -556,7 +556,7 @@
 								},
 								{
 									"key": "orchestrationEntryId",
-									"value": "<orchestration entry id>",
+									"value": "{{configurationId}}",
 									"type": "text"
 								},
 								{
@@ -680,7 +680,7 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/octet-stream",
+								"value": "application/json",
 								"description": "",
 								"disabled": true
 							},
