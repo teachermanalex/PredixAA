@@ -257,7 +257,7 @@ exit 1
 
 output()
 {
-	cf env $app_name >> environment.txt
+	cf env $app_name >> cf_environment.txt
   cat <<EOF >./analytics_env.txt
 Hello Predix App Name      :  "$app_name"
 UAA Name                   :  "$uaaname"
